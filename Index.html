@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Green Building Energy Predictor</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url('https://i.pinimg.com/736x/e4/bb/39/e4bb39458145873f303143454842727f.jpg'); /* Sample background image */
+      background-size: cover;
+      background-position: center;
+      text-align: center;
+      padding: 50px;
+      color: black; /* White text to stand out against the background */
+    }
+    .box {
+      background: rgba(255, 255, 255, 0.7); /* Semi-transparent white background */
+      border-radius: 12px;
+      padding: 30px;
+      width: 300px;
+      margin: auto;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    input, button {
+      padding: 10px;
+      width: 100%;
+      margin: 10px 0;
+      font-size: 16px;
+    }
+    h1 {
+      color: #2c3e50;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Energy Consumption Predictor</h1>
+  <div class="box">
+    <input id="temp" type="number" placeholder="Temperature (°C)">
+    <input id="occupancy" type="number" placeholder="Occupancy">
+    <input id="hour" type="number" placeholder="Hour (0–23)">
+    <button onclick="predictEnergy()">Predict</button>
+    <h2 id="result"></h2>
+  </div>
+
+  <script>
+    // Simulated prediction function (similar to a trained Linear Regression model)
+    function predictEnergy() {
+      const temp = parseFloat(document.getElementById("temp").value);
+      const occupancy = parseFloat(document.getElementById("occupancy").value);
+      const hour = parseFloat(document.getElementById("hour").value);
+
+      if (isNaN(temp) || isNaN(occupancy) || isNaN(hour)) {
+        document.getElementById("result").innerText = "Please enter valid numbers.";
+        return;
+      }
+
+      // Simple model: energy = 5*temp + 10*occupancy - 2*hour + 50
+      const energy = 5 * temp + 10 * occupancy - 2 * hour + 50;
+
+      document.getElementById("result").innerText =
+        `Predicted Energy Consumption: ${energy.toFixed(2)} kWh`;
+    }
+  </script>
+
+</body>
+</html>
